@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'project2app/hom.css' %}">
+</head>
+<body>
+    <h2>Login Page</h2><br>
+    <div class="login">
+    <form id="login" method="post" action="login.php">
+        {% csrf_token %}
+        <label><b>User Name
+        </b>
+        </label>
+        <input type="text" name="Uname" id="Uname" placeholder="Username">
+        <br><br>
+        <label><b>Password
+        </b>
+        </label>
+        <input type="Password" name="Pass" id="Pass" placeholder="Password">
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your Gmail address" required>
+        <br><br>
+        <label><b> Age </b></label>
+        <input type="number" name="age" id="age" placeholder="Age">
+        <br><br>
+        <label><b> Gender </b></label>
+        <br>
+            <label>
+              <input type="radio" name="gender" value="male"> Male
+            </label>
+            <br>
+            <label>
+              <input type="radio" name="gender" value="female"> Female
+            </label>
+            <br>
+            <label>
+              <input type="radio" name="gender" value="other"> Other
+            </label>
+            <br>
+        <br><br>
+        <input type="button" name="sub" id="log" value="Log In Here">
+        <br><br>
+        <br><br>
+      
+    </form>
+</div>
+</body>
+</html>

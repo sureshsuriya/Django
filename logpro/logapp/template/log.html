@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <form method="post" name="Login">
+        {% csrf_token %}
+    <label>Enter Your Name:</label>
+    <input type="text" name="name" >
+    <br><br>
+    <label>Enter Your  Password:</label>
+    <input type="password" {% if obj != '' %} value="{{obj.b}}" {% endif %} name="pass">
+    <br><br>
+    <label>select Yuor Gender</label>
+    <input type="radio" name="gender" value="Male" {% if obj.g is 'Male' %} checked {% endif %}><label for="">Male</label>
+    <input type="radio" name="gender" value="Female"><label>Female</label>
+    <input type="radio" name="gender" value="Others"><label>Others</label>
+    <br><br>
+    <lable>Select Your Course</lable>
+    <select name="course" >
+        <option value="C" selected>C</option>
+        <option value="C#" selected>C#</option>
+        <option value="Java" selected>Java</option>
+        <option value="Python" selected>Python</option>
+    </select>
+    <br><br>
+    <label> Enter Your Number:</label>
+    <input type="text" name="num" >
+    <br><br>
+    <input type="submit" name="bu" value="login">
+    <input type="submit" name="bu1" value="check">
+    <input type="submit" name="bu2" value="clear">
+    <input type="submit" name="bu3" value="fetch">
+    {% if obj != '' and len(obj)>1 %}
+    <table>
+        {% for i in obj %}
+            <tr>
+                <td>
+                    {{i.r}}
+                </td>
+                <td>
+                    {{i.b}}
+                </td>
+                <td>
+                    {{i.g}}
+                </td>
+                <td>
+                    {{i.cou}}
+                </td>
+                <td>
+                    {{i.num}}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    </form>
+    {% endblock %}
+</body>
+</html>

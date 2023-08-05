@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <form method="post" name="Login">
+        {% csrf_token %}
+    <label>Enter Your Name:</label>
+    <input type="text" name="name">
+    <br><br>
+    <label>Enter Your  Password:</label>
+    <input type="password" name="pass">
+    <br><br>
+    <input type="submit" name="but" value="login">
+    <input type="submit" name="but2" value="fetch">
+    {% if obj is not None %}
+    <table>
+        {% for i in obj %}
+            <tr>
+                <td>
+                    {{i.sname}}
+                </td>
+                <td>
+                    {{i.pwd}}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</form>
+{% endblock %}
+</body>
+</html>

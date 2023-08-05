@@ -23,15 +23,21 @@ def login(request):
 
     return render(request, 'login.html')
 def mod(request):
-    if 'but' is request.POST:
-        l={'suresh':"123",'ram':'456','kumar':'789'}
-        s=request.POST['name']
-        r=request.POST['pass']
-        if s!='' and r!='' :
-            if s in l:
-                if l[s]==int(r):
-                    return mod2(request,s,r)
+    if 'bty' in request.POST:
+        # l={'suresh':"123",'ram':'456','kumar':'789'}
+        # s=request.POST['name']
+        # r=request.POST['pass']
+        # if s!='' and r!='' :
+            # if s in l.keys():
+            #     if l[s] == r:
+        return mod2(request)
     return render(request,'moduel.html')
-def mod2(request,x,y):
-    k={'nam':x,'pa':y}
-    return render(request,'moduel2.html',k)
+def mod2(request):
+    k={'nam':'x','pa':'y'}
+    return render(request,'moduel2.html','k')
+def test(request):
+    if 'sub' in request.POST:
+        return test1(request)
+    return render(request,'test.html')
+def test1(request):
+    return render(request,'test1.html')

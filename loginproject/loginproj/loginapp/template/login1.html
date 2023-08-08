@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block name %}
+    <h1>hello wolrd</h1>
+    <form method="post" name="Login">
+        {% csrf_token %}
+        <label>Enter Your  name:</label>
+        <input type="text" name="name" {% if f and obj != '' %} value="{{obj.name}}" {% endif %}>
+        <br><br>
+        <label>Enter Your  Password:</label>
+        <input type="password" {% if f and obj != '' %} value="{{obj.passw}}" {% endif %} name="pass">
+        <br><br>
+        <input type="submit" name="log" value="Login">
+   
+    </form>
+    {% endblock %}
+</body>
+</html>

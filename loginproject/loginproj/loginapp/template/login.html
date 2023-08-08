@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <form method="post" name="Login">
+        {% csrf_token %}
+    <label>Enter Your Name:</label>
+    <input type="text" name="name" {% if f and obj != '' %} value="{{obj.name}}" {% endif %}>
+    <br><br>
+    <label>Enter Your  Password:</label>
+    <input type="password" {% if f and obj != '' %} value="{{obj.passw}}" {% endif %} name="pass">
+    <br><br>
+    <label>select Yuor Gender</label>
+    <input type="radio" name="gender" value="Male" {% if f and obj.gend == 'Male' %} checked {% endif %}><label for="">Male</label>
+    <input type="radio" name="gender" value="Female" {% if f and obj.gend == 'Female' %} checked {% endif %}><label>Female</label>
+    <input type="radio" name="gender" value="Others" {% if f and obj.gend == 'Others' %} checked {% endif %}><label>Others</label>
+    <br><br>
+    <lable>Select Your Course</lable>
+    <select name="course" >
+        <option value="C" {% if f and obj.cou == 'C' %} selected {% endif %} selected>C</option>
+        <option value="C#" {% if f and obj.cou == 'C#' %} selected {% endif %}>C#</option>
+        <option value="Java" {% if f and obj.cou == 'Java' %} selected {% endif %}>Java</option>
+        <option value="Python" {% if f and obj.cou == 'Python' %} selected {% endif %}>Python</option>
+    </select>
+    <br><br>
+    <label> Enter Your Number:</label>
+    <input type="text" name="num" {% if f and obj != '' %} value="{{obj.num}}" {% endif %} >
+    <br><br>
+    <input type="file" name="img">
+    <br><br>
+    <input type="submit" name="bu" value="Register">
+    <input type="submit" name="bu1" value="check">
+    <input type="submit" name="bu2" value="clear">
+    <input type="submit" name="bu3" value="fetch">
+    <input type="submit" name="bu4" value="update">
+    <input type="submit" name="bu5" value="delete">
+    <input type="submit" name="bu6" value="Login">
+    <p>{{f}}</p>
+    </form>
+    {% endblock %}
+</body>
+</html>

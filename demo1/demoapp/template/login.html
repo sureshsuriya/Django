@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block name %}
+    <form method="post " name="enter">
+        {% csrf_token %}
+        <label> Enter Your Name:</label>
+        <inpu type="text" name="name" >
+            <br><br>
+        <label>Enter Your password </label>
+        <inpu type="password" name="passw" ></inpu>
+        <br><br>
+        <label>Enter Your Phone Number </label>
+        <inpu type="text" name="Phonenum" ></inpu>
+        <br><br>
+        <input type="submit" name="bu" value="Register">
+        <br><br>
+        <input type="submit" name="bu6" value="Login">
+
+    </form>
+    {% endblock %}
+    
+</body>
+</html>

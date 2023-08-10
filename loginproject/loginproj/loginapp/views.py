@@ -51,13 +51,37 @@ def login(request):
        return redirect(log1)
     return render(request,'login.html',{'obj':s,'f':f})
 def log1(request):
+    f = False
+    s = ''
     if 'log' in request.POST:
         nam=request.POST['name']
         pasw=request.POST['pass'].encode()
         s = logdb.objects.filter(name = nam,passw=pasw).exists()
         if s:
             s = logdb.objects.filter(name = nam,passw=pasw).get()
-            return log2(request,s)
-    return render(request,'login1.html')
-def log2(request,s):
-    return render(request,'login2.html',{'obj':s})
+            f = True
+            return redirect('loginapp:log2', f = s)
+        else:
+            f = 'invalid'
+    return render(request,'login1.html',{'obj':s,'f':f})
+def log2(request,f):
+    if 'le' in request.POST:
+        return log3(request,f)
+    return render(request,'login2.html',{'obj':f})
+def log3(request,s):
+    f = True
+    if 'sub' in request.POST:
+        nam=request.POST['name']
+        pasw=request.POST['pass'].encode()
+        grnd=request.POST['gender']
+        cours=request.POST['course']
+        phone=request.POST['num']
+        imag=request.POST['img']
+        f = True
+        s = logdb.objects.filter(name= nam).get()
+        s.passw=pasw
+        s.gend = grnd
+        s.cou = cours
+        s.num = phone
+        s.save()
+    return render(request,'login3.html',{'obj':s,'f':f})

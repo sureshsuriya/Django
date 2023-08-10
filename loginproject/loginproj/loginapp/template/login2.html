@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static  %}
+    <link rel="stylesheet" href="{% static 'loginproj/logi3.css'  %}">
 </head>
 <body>
     {% block en %}
-    <h2>Wellcome </h2>
+    <h2>Wellcome 
+            {{obj.name}}
+    </h2>
     <h3>Yuor details</h3>
-    <p>
-        {{obj.name}}
+   <h3> you name is : {{obj.name}}</h3>
+   <h3> your password is :{{obj.passw}}</h3>
+    <h3> your gender id: {{obj.gend}}</h3>
+    <h3> your Phone number: {{obj.num}}</h3>
+    <h3> your Phone course: {{obj.cou}}</h3>
+    <h3>your photo is: {{obj.img.url}}</h3>
     </p>
+    <img src="{% static obj.img.url %}">
+    <br><br>
+    <form method="post" name="fre">
+        {% csrf_token %}
+        <input type="submit" name="le" value="Edit">
+    </form>
     {% endblock %}
 </body>
 </html>

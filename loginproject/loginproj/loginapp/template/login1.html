@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'loginproj/logi2.css'  %}">
 </head>
 <body>
     {% block name %}
-    <h1>hello wolrd</h1>
+    <h1>hello wolrd.....!{{f}} {% if f %} {{obj.name}} {% endif %}</h1>
     <form method="post" name="Login">
         {% csrf_token %}
         <label>Enter Your  name:</label>
